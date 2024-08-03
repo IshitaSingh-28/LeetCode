@@ -1,13 +1,14 @@
 class Solution {
 public:
-    bool canBeEqual(vector<int>& targetArray, vector<int>& currentArray) {
-        vector<int> elementCounts(1001, 0);
-        int uniqueCount = 0;
-        for (int i = 0; i < targetArray.size(); i++) {
-            if (elementCounts[targetArray[i]]++ == 0) uniqueCount++;
-            if (elementCounts[currentArray[i]]-- == 1) uniqueCount--;
+    bool canBeEqual(vector<int>& target, vector<int>& arr) {
+        vector<int> cnt1(1001);
+        vector<int> cnt2(1001);
+        for (int& v : target) {
+            ++cnt1[v];
         }
-        
-        return uniqueCount == 0;
+        for (int& v : arr) {
+            ++cnt2[v];
+        }
+        return cnt1 == cnt2;
     }
 };
